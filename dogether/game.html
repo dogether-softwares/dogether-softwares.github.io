@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="./images/fivecon_32_32-01.png"/>
+    <style>
+        .hide-mouse{
+            cursor: none;
+        }
+        .show-mouse{
+            cursor:auto;
+        }
+        body{
+            margin: 0ch;
+            padding: 0ch;
+            overflow: hidden;
+            background-image: url('./images/back_stars.jpg');
+            height: 100vh;
+            background-repeat: repeat-y;
+            background-position: 0 0;
+            animation: animate 24s linear infinite;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+        }
+        @keyframes animate {
+            from {
+                background-position: 0 100%;
+            }
+            to {
+                background-position: 0 0;
+            }
+        }
+        .enemyfire{
+            position: absolute;
+            transform: rotate(90deg)
+        }
+        .rocketfire{
+            /* background-image: url('./images/rocketfire.gif'); */
+            color: white;
+            height: 16px ;
+            position:absolute;
+        }
+        .enemy {
+            position: absolute;
+            margin-left: -75px;
+            display: none
+        }
+        .score{
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            border: 1px orange solid;
+            padding: 10px;
+            color:orange
+        }
+        .gameover{
+            flex:auto ;
+            position: absolute;
+            top:50%;
+            margin-top: -15em;
+            left: 50%;
+            margin-left: -15em;
+            height: 30em;
+            width: 30em;
+            border: 3px orange solid;
+            color: orange;
+        }
+        .gameover .head{
+            position:relative;
+            top: 5%;
+            font-size: 2em;
+            left:50%;
+            margin-left: -20%
+        }
+        .gameover .restartbutton{
+            position: relative;
+            top: 14em;
+            left: 50%;
+            margin-left: -2.5em ; 
+            font-size: 1.5em;
+            height: 1.5em;
+            width: 5em;
+            border: 2px solid orange;
+            text-align: center;
+        }
+        .mobilescore{
+            position: absolute;
+            color: orange;
+            right: 1%;
+            bottom: 1%
+        }
+
+    </style>
+    <title>doRocket - doGether</title>
+</head>
+<body>
+    <div id="body">
+    </div>
+    <div id="liveboss" style="color:white;display:none"></div>
+    <div class="gameover">
+        <div class="head">GAME-OVER</div>
+        <div class="restartbutton" onclick="restart()">Reiniciar!</div>
+    </div>
+    <div class="score"><img src="./images/fivecon_32_32-01.png" width="30px" alt=""><div class="pontuation">PONTUAÇÃO - 0</div>
+    </div>
+    <div class="mobilescore" style="display:none"><div class="pontuation">PONTUAÇÃO - 0</div></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script>
+    /*
+    //  pt-BR ***
+    //  Esse jogo foi criado com o intuito de ser uma simples demonstração de uso do Jquery e JavaScript.
+    //  Não há intuito comercial. As imagens foram obtidas através de sites especializados em imagens GIF
+    //  Desenvolvido por Sérgio Venâncio.
+    //  Se tiver uma ótima ideia ou até mesmo uma sugestão ou melhoria, fique a vontade para fazer um Pull Request, 
+    //  vou adorar ;D.
+    //  PS.: Por Favor NÃO USE IEXPLORER.
+    /
+    |================================================================
+    |   Class DogetherGame
+    |================================================================
+    |
+    |
+    */
+    class DogetherGame {
+        changeLevel = true
+        level = 1
+        pontuation = 0
+        rocketX = 0
+        rocketY = 0
+        gameOverStatus = false
+        activeBoss = false
+        liveBigBoss = 50
+        hitDamageBigBoss = 0
+        mobileMode = 0
+
+        /*
+        *  
+        *
+        */
+        _newEnemy(){
+            let idEnemy = `${((Math.random() * 40)*7).toFixed(0) * (new Date().getMilliseconds() * new Date().getMinutes())}-${new Date().getUTCMilliseconds()}`
+            $('#body').append(`<div class="enemy" style="left: ${(Math.random()*10)*10}%" id="enemy-${idEnemy}"><img src="./images/enemy.gif" width="150px"  alt=""></div>`)
+            $(`#enemy-${idEnemy}`).slideDown(1000)
+            setTimeout(()=>{
+                this._enemyFire(`#enemy-${idEnemy}`)
+                let interval = setInterval(()=>{
+                    console.log( $(`#enemy-${idEnemy}`) )
+                    if(this.gameOverStatus || !$(`#enemy-${idEnemy}`).length){
+                        clearInterval(interval)
+                    }
+                    this._enemyFire(`#enemy-${idEnemy}`)
+                },3000)
+            },1500)
+        }
+
+        /*
+        *  
+        *
+        */
+        _enemyFire(id){
+            let position = $(id).position()
+            $('#body').append(`<img src="./images/enemyfire.gif" style="left:${position.left -30}px;top: ${position.top + 56}px;"  width="50px" class="enemyfire" alt="">`)
+            $('.enemyfire').animate({top: $(window).height()}, 2000, ()=>{})
+        }
+
+        /*
+        *  
+        *
+        */
+        _rocketFire(e){
+            $('#body').append(`<div class="rocketfire" style="left:${(e.clientX - 7)}px;top:${e.clientY}px"><img src="./images/rocketfire.gif" width="16px" ;margin-left: -8px></div>`)
+            $('.rocketfire').animate({top: -30},1000,()=>{})
+        }
+
+        /*
+        *  
+        *
+        */
+        _addPontuation(pontuation){
+            this.pontuation = this.pontuation + (pontuation * this.level)
+            $('.pontuation').html(`PONTUAÇÃO - ${this.pontuation}`)
+        }
+
+        /*
+        *  
+        *
+        */
+        _clearPontuation(){
+            this.pontuation = 0
+            $('.pontuation').html(`PONTUAÇÃO - ${this.pontuation}`)
+        }
+
+        /*
+        *  
+        *
+        */
+        _killEnemy(element){
+            let topP = ($(element).position()).top
+            let leftP = ($(element).position()).left
+            $(element).remove()
+            let explosionId= `${((Math.random() * 40)*7).toFixed(0)}`
+            $('#body').prepend(`<div id="explosion-${explosionId}" style="top:${topP}px;left:${leftP - 75}px;position:absolute"><img src="./images/enemy-explosion.gif" width="150px" alt=""></div>`)
+            $(element).remove()
+            this._addPontuation(20)
+            setTimeout(()=>{
+                $(`#explosion-${explosionId}`).remove()
+                let pp = this.pontuation
+                if (pp === 100 || pp === 500 || pp === 700){                  
+                    this._newEnemy()
+                    this._newEnemy()
+                }
+                else if(pp >= 1500){ // 1500
+                    if(!this.activeBoss){
+                        this.activeBoss = true
+                        this._newBigBoss()
+
+                    }
+                }
+                else if(!this.activeBoss) {
+                    this._newEnemy()
+                }
+            },700)
+        }
+        _bossMonitoring(){
+            setInterval(()=>{
+                let self = this
+                $('#body img').each(function (i, eleE){
+                    if(eleE.className === 'bigboss'){
+                        'rocketfire'
+                        $('#body div').each(function (i, eleF) {
+                            if(eleF.className === 'rocketfire'){
+                                let el = ($(eleE).position())
+                                let element = eleF
+                                let topE = 60
+                                let leftE = 80
+                                if((el.top - topE) <= ($(element).position()).top && (el.top + topE) >= ($(element).position()).top){
+                                    if((el.left - (leftE +50)) <= ($(element).position()).left && (el.left + (50+leftE)) >= ($(element).position()).left){                                
+                                        $(eleF).remove()
+                                        let idFromHit = (new Date().getMilliseconds() * (Math.random()).toFixed(0) * 1548)
+                                        $('#body').append(`<img src="./images/bigBossdamage.gif" id="hit-${idFromHit}" width="30px" style="position:absolute;left:${el.left}px;top:${el.top + 90}px">`)
+                                        setTimeout(()=>{
+                                            $(`#hit-${idFromHit}`).remove()
+                                        },250)
+                                        self._damageBigBoss()
+                                    }
+                                } 
+                            }
+                        })
+                    }
+                })
+
+            },10)
+        }
+
+        /*
+        *  
+        *
+        */
+        _killRocket(){
+            console.log('morreu')
+            $(document).off('mousemove').off('click')
+            let position = $('#rocket').position()
+            $('#rocket').remove()
+            $('#body').prepend(`<div id="rocketExplosion" style="position:absolute;left: ${position.left - 75}px ;top:${position.top}px"><img src="./images/rocket-explosion.gif" width="150px"></div>`)
+            setTimeout(()=>{
+                $('#rocketExplosion').remove()
+            },500)
+            setTimeout(()=>{
+                this.gameOver()
+            },3000)
+        }
+        _damageBigBoss(){
+            this.hitDamageBigBoss++
+            if (this.hitDamageBigBoss > 10) {
+                this.hitDamageBigBoss = 0
+                this._addPontuation(77)
+                this.liveBigBoss--
+                $('#liveboss').html(`BIGBOSS - ${this.liveBigBoss}`)
+                this._killBigBoss()
+            }
+        }
+        _killBigBoss(){
+            if(this.liveBigBoss < 1) {
+                    setInterval(()=>{
+                        let idExplosion = ((Math.random()).toFixed(0)*(new Date().getMilliseconds())*12354821)
+                        $('#body').prepend(`<div id="bigbossExplosion-${idExplosion}" style="position:absolute;left: ${(($('.bigboss').position()).left -110)}px ;top:${($('.bigboss').position()).top}px"><img src="./images/rocket-explosion.gif" width="200px;z-index:2"></div>`)
+                        setTimeout(()=>{
+                            $(`#bigbossExplosion-${idExplosion}`).remove()
+                        },400)
+                    },2500)
+                $('.bigboss').animate({left: ($(window).width()/2)}, 8000, ()=>{                    
+                    let position = ($('.bigboss').position())
+                    setTimeout(()=>{
+                        $('#body').append(`<img id="bigiboss-explosion" width="700px" src="./images/bigboss-explosion.gif" style="position:absolute;left:${position.left-290}px;top:${position.top - 100}px;margin-left:-150px" >`)
+                        setTimeout(()=>{
+                            $('.bigboss').remove()
+
+                        },3000)
+                        setTimeout(()=>{
+                            $('#bigiboss-explosion').remove()
+                        },4000)
+                    },2000)
+
+                })
+            }
+        }
+
+        _moveRocket(e){
+            let time = 5 
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                time = 400
+            }
+            this.rocketX = e.clientX
+            this.rocketY = e.clientY
+            $('#rocket').animate({left: `${e.clientX}`, top: e.clientY}, time,() => {})
+        }
+        _newBigBoss(){
+            let idBigBoss = `${((Math.random() * 40)*7).toFixed(0)}`
+            $('#body').append(`<img width="300px" class="bigboss" id="bigboss-${idBigBoss}" src="./images/BigBoss.gif" style="position:absolute;top: -200px;left:150px;margin-left:-150px">`)
+            let maxLeft = 0
+            let maxRight = ($(window).width()) - 30
+            $(`#bigboss-${idBigBoss}`).animate({top: 0},6000,()=>{
+                $('#liveboss').show()
+                toRigth()
+                })
+            let self = this
+            function toRigth(){
+                if(self.liveBigBoss < 1){
+                    return false
+                }
+                $(`#bigboss-${idBigBoss}`).animate({left: maxRight},6000,()=>{toLeft()})
+                //startFire(`#bigboss-${idBigBoss}`)
+            }
+            function toLeft(){
+                if(self.liveBigBoss < 1){
+                    return false
+                }
+                $(`#bigboss-${idBigBoss}`).animate({left: maxLeft},6000,()=>{toRigth()})
+            }
+            setTimeout(()=>{
+                let interval = setInterval(()=>{
+                    if(this.gameOverStatus || !$('.bigboss').length || this.liveBigBoss < 1){
+                        clearInterval(interval)
+                    }
+                    setTimeout(()=>{
+                        $('#body').append(`<img src="./images/enemyfire.gif" style="left:${($(`#bigboss-${idBigBoss}`).position()).left - 20}px;top: ${($(`#bigboss-${idBigBoss}`).position()).top + 130}px;"  width="50px" class="enemyfire" alt="">`)
+                        $('.enemyfire').animate({top: $(window).height()}, 2000, ()=>{})
+                    },250)
+                    setTimeout(()=>{
+                        $('#body').append(`<img src="./images/enemyfire.gif" style="left:${($(`#bigboss-${idBigBoss}`).position()).left - 20}px;top: ${($(`#bigboss-${idBigBoss}`).position()).top + 130}px;"  width="50px" class="enemyfire" alt="">`)
+                        $('.enemyfire').animate({top: $(window).height()}, 2000, ()=>{})
+                    },500)
+                    $('#body').append(`<img src="./images/enemyfire.gif" style="left:${($(`#bigboss-${idBigBoss}`).position()).left - 20}px;top: ${($(`#bigboss-${idBigBoss}`).position()).top + 130}px;"  width="50px" class="enemyfire" alt="">`)
+                    $('.enemyfire').animate({top: $(window).height()}, 2000, ()=>{})
+
+                },1000)
+                this._bossMonitoring()
+            },6700)
+
+        }
+        _mobileControl(){
+            this.mobileMode++
+            $('.score').hide()
+            $('.mobilescore').show()
+            setInterval(()=>{
+                let position = $('#rocket').position()
+                let e = {}
+                e.clientX = position.left
+                e.clientY = position.top
+                this._rocketFire(e)
+            },500)
+            $(document).click(this._moveRocket)
+        }
+        _deskTopControl(){
+            $(document).click(this._rocketFire).mousemove(this._moveRocket)
+        }
+        
+        start(){
+            this.liveBigBoss = 50
+            $('#liveboss').html(`BIGBOSS - ${this.liveBigBoss}`)
+            $('#liveboss').hide()
+
+            this.activeBoss = false
+            this._clearPontuation()
+            this.gameOverStatus = false
+            $('body').removeClass('show-mouse')
+            $('body').addClass('hide-mouse')
+            $('.gameover').hide()
+            $('#body').html('')
+            this._newEnemy()
+            $('#body').append('<img src="./images/rocket2.gif"  id="rocket" style="width:80px;position: absolute;margin-left: -40px">')
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                this._mobileControl()
+            }else{
+                this._deskTopControl()
+            }
+            
+            this._scanGameScreen()
+        }
+
+        gameOver(){
+            this.gameOverStatus = true
+            $('body').removeClass('hide-mouse')
+            $('body').addClass('show-mouse')
+            $('.gameover').show()
+        }
+
+        _scanGameScreen(){
+            let interval = setInterval(()=>{
+            if(this.gameOverStatus){
+                clearInterval(interval)
+            }
+            let arrBody = document.getElementById('body').children
+            let enemyList = []
+            //let rocketlist = []
+            for( let element of arrBody){
+                if (($(element).position()).top === -30){
+                    $(element).remove()
+                }
+                if(element.className === 'enemy') {
+                    enemyList.push({
+                        top: ($(element).position()).top,
+                        left: ($(element).position()).left,
+                        element: element
+                    })
+                }
+            }
+            for(let element of arrBody){
+                if(element.className === 'enemyfire'){
+                    let topE = 20
+                    let leftE = 30
+                    if(($(element).position()).top > ($(window).height() - 50)){
+                        $(element).remove()
+                    }
+                    if ((($(element).position()).top - topE) < ($('#rocket').position()).top && (($(element).position()).top + topE) > ($('#rocket').position()).top) {
+                        if ((($(element).position()).left + leftE ) < (($('#rocket').position()).left + 30 )&& (($(element).position()).left  + leftE) > (($('#rocket').position()).left - 15)) {
+                            $(element).remove()
+                            this._killRocket()
+                        }
+                    }
+                    // ($(element).position()).left
+                }
+                if(element.className === 'rocketfire'){
+                    let topE = 80
+                    let leftE = 80
+                    for(let el of enemyList){
+                        if((el.top - topE) <= ($(element).position()).top && (el.top + topE) >= ($(element).position()).top){
+                            if((el.left - leftE) <= ($(element).position()).left && (($(el.element).position()).left + leftE) >= ($(element).position()).left){                                
+                                $(element).remove()
+                                startGame._killEnemy(el.element)
+                            }
+                        }
+                    }
+                }
+            }
+            enemyList = []
+         },10)
+        }
+    }
+    
+    let startGame = new DogetherGame
+    function restart(){
+        startGame.start()
+    } 
+
+    setTimeout(()=>{
+        //startGame._killRocket()
+    },4000)
+    
+    $(function (){
+        startGame.start()
+    })
+    
+    
+    </script>
+</body>
+</html>
