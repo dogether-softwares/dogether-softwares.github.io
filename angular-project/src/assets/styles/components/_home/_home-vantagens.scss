@@ -1,0 +1,215 @@
+.home-vantagens {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  background: white;
+
+  @include respond-to(large) {
+    background: transparent;
+  }
+
+  .mat-ink-bar {
+    display: none;
+    
+    @include respond-to(large) {
+      display: block;
+    }
+  }
+
+  .home-vantagens__mobile-current-label {
+    width: fit-content;
+    max-width: $max-width;
+    align-self: center;
+    padding: 2% 0;
+    font-weight: bold;
+    font-size:  em(14px);
+    color: #000;
+
+    // @include respond-to(large) {
+    //   display: none;
+    // }
+  }
+
+
+  .home-vantagens__nav {
+    min-width: 320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    position: relative;
+    top: 30px;
+    margin-top: -30px;
+
+    // @include respond-to(large) {
+    //   display: none;
+    // }
+
+    a {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+
+      color: $color-txt;
+      font-size: em(34);
+      @include border-radius(20px);
+      z-index: 200;
+    }
+  }
+
+  .mat-tab-header, .mat-tab-nav-bar {
+    border-bottom: 0;
+    
+    @include respond-to(large) {
+      border-bottom: 1px solid $color-primary;
+    }
+  }
+
+  .mat-ink-bar {
+    background-color: $color-black !important;
+    height: 6px;
+  }
+
+  .mat-tab-labels {
+    background-color: none;
+    
+    @include respond-to(large) {
+      background-color: $color-white;
+    }
+    z-index: 100;
+  }
+
+  .mat-ripple-element {
+    background-color: transparent;
+    @include respond-to(large) {
+      background-color: rgba(0,0,0,0.1);
+    }
+  }
+
+  
+  .mat-tab-label-active, .mat-tab-label {
+    text-indent: -9999em;
+    color: transparent;
+    min-width: 25px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    
+    @include respond-to(large) {
+      background-color: $color-bg;
+      color: $color-txt;
+      text-indent: 0;
+      // width: 220px;
+      min-width: 160px;
+      height: 100%;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 16px 16px 22px 16px;
+      margin: 0 50px;
+      border-radius: 0%;
+    }
+    
+    .mat-tab-label-content {
+        width: em(14);
+        height: em(14);
+        border-radius: 50%;
+      
+      @include respond-to(large) {
+        white-space: normal;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+  .mat-tab-label-active .mat-tab-label-content {
+    background-color: $color-black;
+    @include respond-to(large) {
+      background-color: transparent;
+    }
+  }
+  .mat-tab-label:not(.mat-tab-label-active) .mat-tab-label-content {
+    background-color: #cecece;;
+
+    @include respond-to(large) {
+      background-color: transparent;
+    }
+  }
+
+  .app-tab-custom {
+    background-color: $color-bg;
+    color: $color-txt;
+    
+    .mat-tab-body .mat-tab-body-active {
+      overflow: hidden;
+    }
+    .mat-tab-body-content {
+      overflow: hidden !important;
+    }
+
+    text-align: center;
+
+    h1 {
+      margin-bottom:  em(25px);
+      font-size: em(30px);
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    p {
+      margin-bottom:  em(50px);
+    }
+    
+    button {
+      width: 100%;
+      font-size: em(20);
+      padding: em(12) em(22);
+      box-sizing: border-box;
+
+      @include respond-to(medium) {
+        width: auto;
+      }
+    }
+
+    .app-tab-custom__image {
+      display: flex;
+      width: 100%;
+    }
+
+    .mat-tab-body-content > div:first-child > div:first-child {
+      padding: 5% 10% 10% 10%;
+      @include respond-to(medium) {
+        padding: 5%;
+        
+        max-width: $max-width;
+        margin: 0 auto;
+      }
+    }
+
+    @include respond-to(large) {
+      .vantagens__tab,
+      .vantagens-exclusivas__tab {
+        text-align: right;
+      }
+
+      .vantagens__tab h1,
+      .vantagens__tab p {
+        width: 39%;
+      }
+
+      h1,
+      p,
+      button {
+        float: right;
+        clear: both;
+      }
+
+    }
+
+  }
+
+}

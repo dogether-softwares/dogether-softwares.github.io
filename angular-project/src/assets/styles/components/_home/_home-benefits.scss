@@ -1,0 +1,90 @@
+.conteudo {
+    text-align: center;
+    //height:600px;
+
+    h2 {
+        font-size: 20px;
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .todas-vantagens,.todas-vantagens-button, .partner-vantagens,.text-vantagens {
+        display: none;
+    }
+
+    .slide-show {
+        text-align: center;
+
+        mat-tab-group{
+            text-align: center;
+        }
+
+        i {
+            font-size: 10em;
+            display: block;
+            color: black;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+            background-color: black;
+            width: 90%;
+        }
+    }
+
+    @include respond-to(medium) {
+        .slide-show {
+            display: none;
+        }
+
+        .todas-vantagens-button, .partner-vantagens, .text-vantagens{
+            display: block;
+            margin: 0 auto;
+        }
+        .todas-vantagens-button{
+            padding:10px;
+            background-color:#B11116;
+            width:300px;
+
+        }
+        .todas-vantagens{
+            display:grid;
+            grid-template-columns:300px 300px 300px;
+            align-items:center;
+            margin:60px auto;
+            justify-content: center;
+            i{
+                font-size:7em;
+                display:block;
+                color:black;
+            }
+        }
+        .text-vantagens{
+            max-width:480px;
+            margin:60px auto;
+
+        }
+
+        .partner-vantagens{
+            display:grid;
+            grid-template-columns:320px 320px 320px;
+            width:900px;
+            margin:60px auto;
+
+            .partner {
+                .partner-logo {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                margin: 5px;
+                background-color: white;
+                box-shadow:2px 2px 10px lightgray;
+                padding:15px;
+                height:250px;
+            }
+        }
+    }
+}

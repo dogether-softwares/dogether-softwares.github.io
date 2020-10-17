@@ -1,0 +1,331 @@
+.app-modalAuth {
+  width: 660px;
+  padding: 0px;
+  position: relative;
+  align-items: center;
+
+  .close-btn {
+    position: absolute;
+    display: block;
+    top: 1em;
+    right: 1em;
+
+    a {
+      font-size: 22px;
+      color: black;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+  }
+
+  .mat-dialog-container {
+    width: 660px;
+    height: auto;
+    max-width: 100%;
+    padding: 0px 0px 0px;
+    border-radius: .3em;
+    box-shadow: none;
+    background: white;
+
+    @include respond-to(medium){
+      height: 480px;
+    }
+  }
+
+  .modal-auth {
+    height: 100%;
+  }
+
+  ._content {
+    background: white;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: grid;
+    grid-template: auto auto / auto;
+    max-height: unset;
+    
+
+    @include respond-to(medium){
+      display: grid;
+      grid-template: auto / 220px 1px auto;
+      height: 480px;
+    }
+
+    .log-vertical-divider {
+      margin: 20px 0;
+      background: #d0d0d0;
+    }
+
+    .log-horizontal-divider {
+      background: #d0d0d0;
+      margin: 7.5px 0;
+      height: 1px;
+    }
+    
+    .img {
+      background: #da2026;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 0;
+
+      > img {
+        width: 150px;
+        margin: 0 14px;
+      }
+
+      @include respond-to(medium){
+        > img {
+          width: 200px;
+          padding:0;
+        }
+      }
+    }
+
+    .form-content {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+
+      @include respond-to(medium){
+        padding: 40px;
+      }
+
+      p, h1 {
+        color: #ab1016;
+      }
+
+      .title {
+        color: #404040;
+        margin: 4px 0;
+        font-size: 20px;
+        font-weight: normal;
+      }
+
+      .firstaccess {
+        margin: 0;
+      }
+
+      .forget {
+        font-size: 14px;
+        color: #404040;
+        font-weight: normal;
+      }
+
+      .signup-link {
+        font-size: 14px;
+        margin: 0;
+        color: #404040;
+
+        > a {
+          color: #ab1016;
+          text-decoration: none;
+          font-weight: bold;
+        }
+      }
+
+      form {
+        display: grid;
+        grid-template: auto auto auto / auto;
+        width: 100%;
+        grid-gap: 14px;
+        margin-top: 15px;
+        @include respond-to(medium){
+          margin-top: 20px;
+        }
+        text-align: center;
+
+        .firstaccess {
+          margin: 0;
+          font-size: 16px;
+          color: #ab1016;
+        }
+
+        mat-form-field.mat-form-field {
+          border: 1px solid #D3D3D3;
+          background-color: white !important;
+          border-radius: 5px;
+        }
+
+        .mat-form-field.mat-focused {
+          .mat-form-field-label {
+            color: #6D7278 !important;
+          }
+        }
+
+        .mat-form-field-underline {
+          display: none;
+        }
+        
+        .mat-form-field-wrapper {
+          padding: 0;
+        }
+
+        .mat-form-field-infix {    
+          padding: 6px 0 4px 0;
+          font-size: 16px;
+          height: 42px;
+        }
+
+        .mat-form-field-flex {
+          border-radius: 4px;
+          background-color: white !important;
+          padding: .5em 16px 0 16px;
+        }
+
+        input {
+          background-color: white !important;
+          font-size: 16px;
+        }
+
+        button {
+          width: 100%;
+          background: #c1272d;
+          color: white;
+          font-weight: bold;
+          text-transform: uppercase;
+          border: 0;
+          border-radius: 0;
+          font-size: 16px;
+          height: 44px;
+        }
+
+        button:hover {
+          color: white;
+          background: #8b171b;
+        }
+
+        .keep-logged {
+          font-size: 14px;
+          .css-checkbox {
+            @include css-checkbox(18px, $selectedColor: #B11116);
+          }
+
+          span {
+            margin-left: 14px;
+          }
+        }
+      }
+
+      ._rec--form {
+        grid-template: auto auto / auto;
+        margin: 0;
+      }
+    }
+
+    .social-btns {
+      bottom: 1.5em;
+      padding-top: 10px;
+      width: 100%;
+
+      div._grid-socialButtons {
+        display: grid;
+        grid-template: auto / auto auto auto;
+        grid-gap: 20px;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+
+        > p {
+          font-size: 14px;
+          color: #404040;
+          margin: 0;
+        }
+  
+        button {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          border: 0px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+  
+          color: white;
+          text-align: center;
+          font-family: $font4;
+          vertical-align: middle;
+          cursor: pointer;
+          @include transition(0.15s ease-in);
+          &:hover {
+            @include scale(1.05);
+            @include transition(0.25s ease-out);
+            @include box-shadow(em(1), em(1), em(0), em(1), rgba(0, 0, 0, 0.3));
+          }
+          i {
+            font-size: em(20);
+            vertical-align: middle;
+          }
+          &._socialButtons--facebook {
+            background: #43619c;
+          }
+          &._socialButtons--twitter {
+            background: #1da1f2;
+          }
+          &._socialButtons--google {
+            background: #f2481d;
+          }
+        }
+      }
+    }
+
+    ._error {
+      text-align: center;
+      color: #d8422e;
+      font-weight: bold;
+      font-size: 14x;
+      margin-bottom: 30px;
+    }
+
+    div._component-dividerSection {
+      color: black;
+
+      position: relative;
+      height: auto;
+      width: 100%;
+      margin: 30px 0;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      align-items: center;
+
+      p._label,
+      h6._label {
+        background: white;
+        margin: 0px;
+        padding: 4px 5%;
+        position: relative;
+        text-align: center;
+      }
+
+      hr._label_hr {
+        position: absolute;
+        margin: 0;
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        top: 45%;
+      }
+    }
+  }
+}

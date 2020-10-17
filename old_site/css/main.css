@@ -1,0 +1,33 @@
+body {
+  /* position: fixed; */
+  margin: 0;
+  padding: 0;
+  background-attachment: fixed !important;
+}
+
+.dogether-top-section {
+  /* position: fixed; */
+  min-height: 100vh;
+  /* z-index: -10; */
+}
+
+.dogether-init-section {
+  max-width: 1100px;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 0 auto;
+  /* border-radius: 20px; */
+  min-height: 800px;
+}
+.dogether-init-section__mobile-hellow div {
+  position: absolute;
+  top: -40px;
+}
+.dogether-init-section__mobile-hellow div img {
+  max-width: 200px;
+}
+
+.row {
+  margin: 0 !important;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,58 @@
+
+.modal-validateemail {
+    width: 100%;
+    display: grid !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #F2F2F2;
+    grid-template: auto auto / auto;
+
+    .header-email {
+        height: 82px;
+        color: #404040;
+        display: grid;
+        grid-template: auto / auto auto;
+
+        h1 {
+            font-size: 20px;
+            padding: 0 40px;
+            margin: 0;
+            display: flex;
+            align-self: center;
+        }
+
+        .close-btn {
+            color: black;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 28px;
+            align-self: center;
+            margin-right: 20px;
+
+            a {
+                color: black;
+            }
+        }
+    }
+
+    .form-content {
+        background: white;
+        padding: 20px;
+        margin: 0;
+        width: 100%;
+        max-width: unset;
+        border-radius: 0;
+
+        form {
+            display: grid;
+            grid-template: auto auto auto auto / auto;
+            width: 220px;
+            margin: auto;
+            grid-gap: 10px;
+        }
+
+        button {
+            font-weight: bold;
+        }
+    }
+}

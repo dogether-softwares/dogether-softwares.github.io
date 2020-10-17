@@ -1,0 +1,109 @@
+@import '../../../../assets/styles/utils/mixins';
+@import '../../../../assets/styles/utils/variables';
+
+section {
+    width: 100%;
+    height: 100%;
+    
+    &.st-hero {
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, #000000 100%), url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/bg-torcida.png");
+
+        background-attachment: initial;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &.st-benefits {
+        background: url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/bg-preto.png");
+    }
+    .st-benefits-background-div {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 500;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, #000000 100%);
+        @include respond-to(medium) {
+            display: block;
+        }
+    }
+    &.st-benefits-wrapper {
+        position: relative;
+        @include respond-to(medium) {
+            margin: auto;
+            // margin-bottom: 350px;
+            padding: 40px 16px 100px;
+            background: url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/gerson-destaque.png");
+
+            background-attachment: initial;
+            background-position: -120px 150%;
+            background-repeat: no-repeat;
+            background-size: auto 750px;
+        }
+        @include respond-to(large) {
+            background-position: 0px 150%;
+        }
+    }
+
+    &.st-testimonies {
+        background: url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/bg-vermelho.png");
+    }
+    &.st-testimonies-wrapper {
+        @include respond-to(medium) {
+            margin: auto;
+            padding: 40px 16px 20px;
+            background: linear-gradient(180deg, rgba(222,34,41,0) 0%, #580D0F 100%), url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/gabigol-destaque.png");
+
+            background-attachment: initial;
+            background-position: 180% -50%;
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+        @include respond-to('large') {
+            background-position: 140% -50%;
+        }
+        @include respond-to('extra-large') {
+            background-position: 120% -50%;
+        }
+    }
+    
+    &.st-videos {
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, #000000 100%), url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/bg-preto.png");
+    }
+    
+    &.st-testimonies,
+    &.st-videos {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &.st-hero,
+    &.st-benefits,
+    &.st-testimonies,
+    &.st-videos {
+        padding: 30px 16px 40px;
+    }
+
+    @include respond-to('medium') {
+        &.st-hero {
+            height: 700px;
+        }
+        &.st-benefits {
+            height: 850px;
+            padding: 0;
+        }
+        &.st-testimonies {
+            height: 770px;
+            padding: 0;
+        }
+        &.st-videos {
+            height: 600px;
+            padding: 40px 16px 40px;
+        }
+    }
+}

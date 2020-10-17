@@ -1,0 +1,124 @@
+div.view-pending-container {
+    display: block;
+    width: 500px;
+    min-height: 760px;
+    margin: auto;
+    background: white;
+    text-align: center;
+
+    div.logo {
+        display: block;
+        // background: $primary-color;
+        width: 100%;
+        height: 150px;
+
+        img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+        }
+    }
+    h1 {
+        font-weight: normal;
+        font-size: 28px;
+    }
+    h2 {
+        font-weight: normal;
+        font-size: 15px;
+    }
+    view-data-pending-form {
+
+        div.view-data-pending-form {
+            display: block;
+            max-width: 400px;
+            margin: auto;
+           
+            form {
+
+                div.pedding-field {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    height: 60px;
+                    margin: 25px auto;
+
+                    &.col-2 {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-rows: 1fr;
+                        grid-template-areas: ". .";
+                        grid-column-gap: 8px;
+
+                        div {
+                            max-width: 100%;
+
+                            mat-form-field {
+                                width: 100%;
+                                max-width: 196px;
+                            }
+                            div.charset-validation {
+                                font-size: 9px;
+                                margin: 3px auto;
+                                color: #c0c0c0;
+                                position: absolute;
+                                bottom: -3px;
+                                right: 5px;
+                            }
+                        }
+                    }
+
+                    span.instructions {
+                        position: absolute;
+                        font-size: 13px;
+                        font-style: italic;
+                        left: 0px;
+                        bottom: -18px;
+                    }
+
+                    mat-form-field {
+                        width: 100%;
+                    }
+
+                    button {
+                        width: 100%;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        padding: 20px;
+                        font-size: 18px;
+                    }
+                }
+
+            }
+
+        }
+
+
+    }
+    div.view-pending-footer {
+
+        h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+
+            i {
+                margin-left: 10px;
+                color: $primary-color;
+                font-size: 30px;
+            }
+        }
+
+
+    }
+
+    &.email-pending {
+        padding: 0 40px;
+
+        .start-validation {
+            margin: 20px 0;
+        }
+    }
+}

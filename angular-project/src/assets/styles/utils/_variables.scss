@@ -1,0 +1,146 @@
+$primary-color: #B11116;
+$primary-dark-color: #580707;
+$primary-light-color: #f61e1e;
+
+$secondary-color: #4d4f5c;
+$secondary-dark-color: #222329;
+$secondary-light-color: #787b8f;
+$accent-color: #d48a29;
+$accent-dark-color: #805318;
+$accent-light-color: #ffff00;
+$separator-color: #cbcbce;
+$danger-color: rgb(207, 68, 68);
+
+$color-red: #B11116;
+$color-yellow: #ffff00;
+$color-primary: #4d4f5c;
+$color-gold: #B11116;
+$color-black: black;
+$color-white: white;
+$color-green: #53C457;
+
+$color-bg: white;
+$color-txt: black;
+
+//Z-indexes
+
+$z-index-level-0:   0; 
+$z-index-level-1:   1; 
+$z-index-level-2:   2; 
+$z-index-level-3:   3; 
+$z-index-level-4:   4; 
+$z-index-level-5:   5; 
+$z-index-level-6:   6; 
+$z-index-level-7:   7; 
+$z-index-level-8:   8; 
+$z-index-level-9:   9; 
+$z-index-level-10: 10; 
+$z-index-level-11: 11; 
+
+// Sub menu minha-conta
+$menu-minha-conta-border-select: 3px solid $primary-color;
+
+$app-background: url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/bg-torcida.png")
+  top no-repeat;
+$app-background-mobile: url("https://flamengo.s3-sa-east-1.amazonaws.com/flamenguista/assets/images/bg-torcida.png")
+  top no-repeat;
+
+//Home Planos
+$app-home-plans: url("https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/st-pricing-bg.jpg")
+  top no-repeat;
+//Home Ingressos
+$app-home-tickets: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 30%),
+url("https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/st-tickets-stadium-with-bg.jpg")
+  top no-repeat;
+//Home Conteúdo Exclusivo
+$app-home-exclusive-content: url("https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/grounge_stripe_bg_black.png")
+  top no-repeat;
+
+// tickets
+  $app-tickets: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 70%), 
+  url("https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/st-tickets-stadium-with-bg.jpg")
+  top no-repeat;
+
+// Header Logado
+$header-logado-height: 184px;
+$header-logado-height-mobile: 80px;
+$header-logado-color: #404040;
+$header-logado-bg-color: white;
+$header-logado-background: url('https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/header_bg.png') ;
+$header-logado-logo: url('https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/club-shield.png') no-repeat;
+$header-logado-box-shadow: none;
+
+// Header
+$header-height: 12em;
+$header-color: white;
+$header-bg-color: transparent;
+$header-box-shadow: none;
+$header-user-btn-padding: 0;
+$header-user-btn-color: white;
+$header-user-btn-font-size: 16px;
+$header-user-btn-font-weight: normal;
+$header-user-btn-img-offset: 0;
+$header-user-btn-bg: transparent;
+$header-user-btn-box-shadow: none;
+$header-user-btn-border-radius: 0;
+$header-background-image: url('https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/header_desktop.png') no-repeat;
+$header-background-mobile: url('https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/header_bg_mobile.png') no-repeat ;
+$header-background: url('https://flamengo.s3-sa-east-1.amazonaws.com/prod/assets/images/header_bg.png') no-repeat;
+
+
+
+
+$page-title-txt-color: #C11D1E;
+$page-title-bg-color: #d8d8d8;
+
+// Footer
+$footer-color: #6D7278;
+$footer-bg-color: #000;
+$footer-icons-color: #000;
+$footer-icons-bg-color: #B11116;
+$footer-icons-hover-color: white;
+$footer-icons-hover-bg-color: #000;
+$footer-link-color: white;
+$footer-link-hover-color: #a6a6a6;
+
+// Home deslogada planos
+$home-planos-color: white;
+$home-planos-padding: 0;
+$home-planos-margin: 0;
+$home-planos-background: transparent;
+
+// Home deslogada vantagens
+$home-vantagens-color: black;
+$home-vantagens-padding: 0;
+$home-vantagens-margin: 0;
+$home-vantagens-background: white;
+
+// GLOBAL VARIABLES
+$navigationHeight: 61px;
+
+//-------------------//
+//       FONTS       //
+//-------------------//
+// Utilizado em títulos, textos, etc
+// Fonte neutra
+$font1: "montserrat", sans-serif;
+
+// Utilizado em títulos
+$font2: "Barlow", sans-serif;
+
+// Utilizado em call to actions como buttons
+// Fonte estreita
+$font3: "PT Sans Narrow", sans-serif;
+$font4: "d-din", sans-serif;
+$font5: "stronger", sans-serif;
+$font6: "montserrat", sans-serif;
+$font7: "campton", sans-serif;
+$font8: "montserrat-Bold", sans-serif;
+
+$max-width: 1300px;
+
+
+// SPACE
+$space-small: 15px;
+$space-medium: 30px;
+$space-big: 60px;

@@ -1,0 +1,46 @@
+// UTILS
+@import "utils/_functions";
+@import "utils/_mixins";
+@import "utils/_placeholders";
+@import "utils/_showhide";
+@import "utils/_variables";
+@import "utils/_buttons";
+
+// LAYOUT
+@import "layout/_structure";
+
+// BASE
+@import "base/_typography";
+
+// COMPONENTS 
+@import "components/_forms";
+
+@import "components/_pending/_pending";
+
+@import "components/_swal";
+@import "components/_loading";
+@import "components/_signin";
+@import "components/_form-cadastro";
+
+@import "components/_restricted-area";
+@import "components/_snackbar";
+
+// HOME
+@import "components/_home/_home";
+@import "components/_home/_home-benefits";
+@import "components/_home/_home-infos";
+@import "components/_home/_home-vantagens";
+
+// MINHA CONTA
+// @import "components/_minha-conta/_dependentes";
+// @import "components/_minha-conta/_meu-perfil";
+// @import "components/_minha-conta/_meu-plano";
+// @import "components/_minha-conta/_minha-conta";
+// @import "components/_minha-conta/_pagamento";
+// @import "components/_minha-conta/_form-changepass";
+// @import "components/_minha-conta/_form-validateemail";
+// @import "components/_minha-conta/_form-modalboleto";
+
+
+// SHAME
+@import "shame/_shame";

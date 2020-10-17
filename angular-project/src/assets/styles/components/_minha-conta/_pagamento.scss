@@ -1,0 +1,692 @@
+@import '../../../../assets/styles/utils/mixins';
+@import '../../../../assets/styles/utils/variables';
+
+button {
+  font-weight: bold;
+}
+
+.home-logado-pagamentos {
+  position: relative;
+  
+  .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element{
+    background-color: $primary-light-color;
+  }
+
+  .mat-checkbox-disabled {
+    cursor: not-allowed;
+  }
+  
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+    background-color: $primary-light-color;
+  }
+  .primary-button-not-allow{
+    background-color: $primary-dark-color !important;
+    color: white;
+  }
+
+  .primary-pay-button{
+    background-color: $primary-color !important;
+    padding: 8px;
+    margin-right: 5px;
+    margin-top: 10px;
+    color: $color-white !important;
+    font-weight: bold;
+  }
+  
+  .primary-cancel-button{
+    background-color: $primary-color !important;
+    padding: 8px;
+    margin-right: 5px;
+    color: $color-white !important;
+  }
+  
+  .meio-pagamento-button{
+    display: flex;
+    justify-content: center;
+    
+    button{
+      background-color: white !important;
+      border: 2px solid transparent !important;
+      margin: 10px;
+      width: 80%;
+      color: black;
+      padding: 10px;
+
+      @include respond-to('medium'){
+        width: 300px;
+      }
+
+      &.selected {
+        border: 2px solid darkred !important;
+        transition: 0.5s;
+      }
+    }
+  }
+  .pagar-selection{
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+  }
+  .no-payments {
+    margin-top: 10px;
+    color: #571616;
+  }
+
+  .pagar-todas{
+    background-color:$primary-color;
+    transition: 0.3s;
+    color: white;
+    padding: 5px 10px;
+    width: 100%;
+    margin:0 auto;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    margin-top: 6px;
+    font-weight: bold;
+
+    @include respond-to('device'){
+      width: auto;
+    }
+  }
+
+  padding: 0 15px;
+
+  .title {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    color: black;
+
+    p {
+      margin-top: 12px;
+      color: #27292D;	
+      font-size: 20px;
+      font-weight: normal;
+    }
+  }
+  .line {
+    width: 100%;
+    height: 2px;
+    background-color: gray;
+  }
+
+  .cartao-credito {
+    // padding: 30px 15px 0 15px;
+
+    .cartao {
+      background-color: white;
+      padding: 20px 20px 10px;
+      display: flex;
+      margin: 10px 5px;
+      flex-direction: column;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 2px 7px 0 rgba(0,0,0,0.13);
+      width: 270px;
+
+      @include respond-to(small) {
+        width: 310px !important;
+      }
+
+      .icons {
+        position: absolute;
+        right: 10px;
+
+        .nrn-star-o,
+        .nrn-options {
+          cursor: pointer;
+        }
+
+        .nrn-star-full {
+          color: #b4a917 !important;
+          cursor: default;
+        }
+
+        i {
+          font-size: 26px;
+          padding: 10px;
+          cursor: pointer;
+        }
+      }
+
+      .infos {
+        height: 100%;
+        margin-bottom: 10px;
+
+        &:nth-last-of-type(2) {
+          margin: 0;
+        }
+
+        .info-cartao {
+          display: grid;
+          grid-template-columns: 33.3% 33.3% 33.4%;
+
+          i {
+            font-size: 40px;
+          }
+
+          .logo {
+            > i {
+              transform: scale(0.4);
+              margin-top: -20px;
+              margin-right: -60px;
+              display: block;
+            }
+          }
+        }
+
+        p {
+          font-size: 12px;
+          color: #6a6a6a;
+          margin: 0 0 4px 0;
+        }
+
+        span {
+          font-size: 20px;
+          color: black;
+        }
+      }
+    }
+
+    .addnew {
+      padding: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      text-align: center;
+      color: #404040;
+      font-weight: bold;
+
+      i {
+        margin-right: 5px;
+      }
+    }
+
+    .backnew {
+      padding: 5px;
+      cursor: pointer;
+      margin: 0 0 20px 0;
+      text-align: left;
+      color: #404040;
+      font-weight: bold;
+
+      i {
+        margin-right: 5px;
+      }
+    }
+
+    .adicionar-cartao {
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 7px 0 rgba(0,0,0,0.13);
+      width: auto;
+      margin: 0 auto;
+
+      @include respond-to(small) {
+        width: 400px;
+      }
+
+      .addnew {
+        padding: 10px 0;
+        cursor: pointer;
+        margin-top: 0;
+        text-align: center;
+        color: #404040;
+        font-weight: bold;
+        background: red;
+        color: black;
+      }
+
+      form {
+        display: grid;
+        width: 100%;
+        padding: 20px;
+
+        .lastrow {
+          display: grid;
+          margin: 0;
+          grid-template: auto / auto auto;
+          justify-content: center;
+
+          @include respond-to(device) {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+          }
+
+          i {
+            transform: scale(0.6);
+            display: block;
+            margin: -16px auto 0;
+          }
+
+          .logo {
+            grid-column: 1/3;
+          }
+        }
+
+        .error {
+          padding-top: 10px;
+        }
+
+        :host ::ng-deep .mat-input-placeholder {
+          color: black;
+        }
+        :host ::ng-deep input.md-input-element {
+          color: black;
+        }
+
+        .mat-form-field-invalid .mat-input-element,
+        .mat-warn .mat-input-element {
+          caret-color: black;
+        }
+
+        mat-form-field {
+          color: black;
+          margin-bottom: 10px;
+
+          &.ng-invalid.ng-touched.ng-dirty {
+            color: #f44336;
+            margin-bottom: 32px;
+
+            mat-label {
+              color: #f44336;
+            }
+
+            input {
+              caret-color: #f44336;
+            }
+          }
+
+          &.mat-form-field-type-mat-select.ng-invalid.ng-touched {
+            color: #f44336;
+            margin-bottom: 32px;
+
+            mat-label {
+              color: #f44336;
+            }
+          }
+
+          &.mat-form-field-invalid.ng-untouched.ng-pristine {
+            color: #f44336;
+            margin-bottom: 32px;
+
+            mat-label {
+              color: #f44336;
+            }
+          }
+
+          mat-label {
+            color: black;
+          }
+
+          .mat-form-field-wrapper {
+            padding: 0;
+            width: auto;
+
+            .mat-form-field-flex {
+              background: #ffffff;
+              padding: 0.2em 0.5em 0 0.5em;
+              border: 1px solid #cccccc;
+              border-radius: 10px;
+              height: 45px;
+
+              .mat-form-field-infix {
+                padding: 0.25em 0 0.25em 0;
+                height: 45px;
+
+                input {
+                  padding-left: 0.5em;
+                  font-weight: bold;
+                  height: 20px;
+                }
+              }
+            }
+
+            .mat-form-field-underline {
+              display: none;
+            }
+            .mat-form-field-subscript-wrapper {
+              display: none;
+            }
+          }
+        }
+
+        div.adicionar-cartao-recaptcha {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          margin-bottom: 10px;
+        }
+      }
+
+      > .addnew {
+        cursor: pointer;
+
+        i {
+          font-size: 30px;
+          margin-bottom: 10px;
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .selectedToPay {
+    background: #fffcda;
+  }
+
+  .historico {
+    margin-top: 20px;
+    // padding: 15px 15px 0 15px;
+
+    .table-wrapper {
+      position: relative;
+      min-height: 200px;
+      border-radius: 10px;
+      background: white;
+      padding: 20px 40px;
+      box-shadow: 0 2px 7px 0 rgba(0,0,0,0.13);
+      margin: 10px 0;
+
+      .filters{
+        display: flex;
+
+        .fitler-user{
+          i {
+            color: gray;
+          }
+        }
+      }
+    }
+
+    .table {
+      text-align: center;
+
+      .t-head {
+        display: none;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        color: #5a5a5a;
+        padding: 5px;
+        background-color: #F3F3F3;
+        border-top: 1px solid #D8D8D8;
+        border-bottom: 1px solid #D8D8D8;
+        padding: 20px 0;
+
+        i{
+          font-size: 10px;
+          color: #A7A7A7;
+        }
+
+        @include respond-to(device) {
+          display: grid;
+        }
+      }
+
+      .t-body {
+        button:not(.finishpayment) {
+          margin-top: 10px;
+          background-color: black;
+        }
+
+        .t-row {
+          border-bottom: 1px solid lightgray;
+
+          margin: 10px 0;
+          // grid-template-columns: 1fr 1fr 1fr 1fr;
+          &.hide {
+            display: none;
+          }
+
+          &.paying {
+            grid-template-rows: auto 1fr;
+          }
+
+          .vencimento {
+            grid-area: vencimento;
+          }
+
+          .categoria {
+            grid-area: categoria;
+            .new-contract {
+              background-color: #CD8F37;
+              color: white;
+            }
+            .upgrade{
+              background-color: #3768CD;
+              color: white;              
+            }
+            .segunda-via {
+              background-color: #FF7252;
+              color: white;                       
+            }
+            .placeholder {
+              background-color: rgb(50, 138, 209);
+              color: white;                       
+            }
+            .tag {
+              max-width: 100px;
+              padding: 5px 10px;
+              border-radius: 20px;
+              font-size: 12px;
+            }
+          }
+
+          .nome {
+            text-transform: capitalize;
+            grid-area: nome;
+          }
+
+          .nome-usuario {
+            grid-area: nome-usuario;
+          }
+
+          .cobranca {
+            grid-area: cobranca;
+          }
+
+          .parcela-pendente {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            i{
+              color: #BF9240;
+              margin-left: 5px;
+            }
+          }
+
+          .parcela-paga {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            i{
+              color: #53C457;
+              margin-left: 5px;
+            }
+          }
+
+          .vencimento {
+            grid-area: vencimento;
+          }
+
+          .situacao {
+            grid-area: situacao;
+          }
+
+          .pagamento {
+            grid-area: pagamento;
+          }
+
+          .payingParc {
+            border-top: 1px solid #313131;
+            grid-column: 1 / 6;
+          }
+
+          background-color: white;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          grid-template-areas: "pagamento nome categoria nome-usuario cobranca vencimento situacao";
+
+          @include respond-to(device) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+          }
+
+          > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            padding: 10px;
+            width: 100%;
+
+            .anterior-aberta {
+              margin: 0;
+              font-size: 12px;
+              width: 80%;
+            }
+
+            @include respond-to(device) {
+              padding: 0;
+              width: auto;
+            }
+          }
+
+          .situacao {
+            //color: white;
+          }
+
+          .pagamento {
+
+            .parcelIsChecked {
+              width: 16;
+              height: 16px;
+              background: red;
+              color: white;
+              cursor: not-allowed;
+              border-radius: 4px;
+            }
+
+            i {
+              color: #24c482;
+            }
+
+            button {
+              margin: 5px 0;
+              padding: 10px;
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .t-footer {
+        text-align: center;
+        margin: 15px 8px 0 8px;
+        font-size: 0.8em;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+  }
+
+  .modal-payment-footer {
+    margin-top: 20px;
+  }
+
+  .multiple-button {
+    background: black;
+    padding: 10px;
+    margin: 0 auto 20px auto;
+  }
+
+  @include respond-to(medium) {
+    .cartao {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .pagamentos-filter {
+    margin:0 auto;
+    @media(min-width: 992px){
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    mat-form-field {
+      width: 85%;
+    }
+
+    .first-filter {
+      display: grid;
+      margin: 5px 10px;
+      grid-template: auto / auto;
+      grid-gap: 20px;
+     
+      @media(min-width: 992px){
+        grid-template: auto / auto auto auto;
+        margin: 5px 10px;
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
+
+    .clear-filters {
+      button {
+        padding: 10px 20px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+/*    width: 30%;
+    background: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    mat-form-field {
+      width: 100%;
+    }
+    .first-filter{
+      display: flex;
+      align-items:center;
+      .filter{
+        display: flex;
+        align-items:center;
+        i{
+          font-size: 10px;
+          color: black;
+          margin: 8px 12px 12px 12px;
+        }
+      }
+    }
+  }*/
+
+.payment-parcelas {
+  padding-bottom: 40px;
+  border-bottom: 1px solid lightgray;
+}

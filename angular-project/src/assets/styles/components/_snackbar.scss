@@ -1,0 +1,19 @@
+.app-snackbar--success {
+    background-color: green;
+    color: white;
+
+    button {
+        background-color: darkgreen;
+        color: white;
+    }
+}
+
+.app-snackbar--error {
+    background-color: red;
+    color: white;
+
+    button {
+        background-color: darkred;
+        color: white;
+    }
+}

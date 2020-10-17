@@ -1,0 +1,55 @@
+.restricted-area {
+  margin-top: 90px;
+  padding: 30px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to(large) {
+    margin-top: auto;
+    padding: 160px 0;
+  }
+
+  i {
+    font-size: 150px;
+    color: darkred;
+  }
+
+  h1 {
+    font-size: em(42px);
+  }
+
+  h2 {
+    font-size: em(20px);
+  }
+
+  .actions {
+    margin: auto;
+    display: grid;
+    grid-template: auto / 140px 140px;
+    grid-gap: 40px;
+    margin-top: 40px;
+  }
+  
+}
+
+.page-not-found {
+  padding: 160px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: white;
+
+  i {
+    font-size: 150px;
+    color: darkred;
+  }
+
+  .actions {
+    margin: auto;
+    display: grid;
+    grid-template: auto / 320px;
+    grid-gap: 40px;
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,114 @@
+button {
+    padding:10px 0;
+    text-align:center;
+    border:none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+ &.gold-button {
+    background-color: #c19504;
+    text-align: center;
+    color: white;
+    padding: 10px;
+  }
+  
+  &.black-button {
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding: 10px;
+  }
+
+  &.transparent-button--light-bg {
+    background-color: transparent;
+    text-align: center;
+    color: $color-black;
+    padding: 10px;
+
+    i {
+      color: $primary-color;
+    }
+  }
+
+  &.transparent-button--dark-bg {
+    background-color: transparent;
+    text-align: center;
+    color: $color-white;
+    padding: 10px;
+
+    i {
+      color: $primary-color;
+    }
+  }
+
+  &.white-button {
+    background-color: white;
+    text-align: center;
+    color: #6D7278;
+    border: 1px solid #D0D0D0;
+    padding: 10px;
+    @include border-radius(5px);
+    
+    &.highlight {
+      border: 1px solid #32C5FF;
+      box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+      font-weight: bold;
+      color: black;
+      background: #e0e0e0;
+    }
+
+  }
+  
+  &.primary-button {
+    background: #b3191d;
+    color: white;
+    border: 0;
+    border-radius: 0;
+    font-size: 14px;
+    padding: em(8) em(18);
+    @include transition(.3s);
+    &:hover {
+      background: #e03338;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      //background: #f1f1f1;
+      color: lightgray;
+
+      &:hover {
+        //background: #f1f1f1;
+        color: lightgray;
+      }
+    }
+  }
+  
+  &.secundary-button {
+    background: #a7a7a7;
+    color: white;
+    border: 0;
+    border-radius: 0;
+    font-size: 14px;
+    padding: em(8) em(18);
+    &:hover {
+      @include SetBgAndDarkenHover(#a7a7a7);
+    }
+  }
+
+  &.noaction-button {
+    cursor: not-allowed;
+    background: #333;
+    color: #999;
+    border: 0;
+    border-radius: 0;
+    font-size: 14px;
+    padding: em(8) em(18);
+  
+  }
+
+  
+
+}

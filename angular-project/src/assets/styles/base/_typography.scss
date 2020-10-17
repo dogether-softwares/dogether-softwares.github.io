@@ -1,0 +1,18 @@
+
+p.text-title {
+    @include respond-to(small) {
+    }
+    @include respond-to(medium) {
+    }
+    @include respond-to(large) {
+    }
+}
+  
+p.text-helper {
+    @include respond-to(small) {
+    }
+    @include respond-to(medium) {
+    }
+    @include respond-to(large) {
+    }
+}

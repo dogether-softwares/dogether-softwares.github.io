@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-const routes: Routes = [];
+import { SelectivePreloadingStrategyService } from './global.service';
+
+const routes: Routes =
+  [
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', loadChildren: () => import('./page/home/home.module').then(m => m.HomeModule), data: { preload: true } }
+  ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: SelectivePreloadingStrategyService })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

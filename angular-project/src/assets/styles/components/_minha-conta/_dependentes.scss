@@ -1,0 +1,241 @@
+@import '../../../../assets/styles/utils/mixins';
+@import '../../../../assets/styles/utils/variables';
+
+.minha-conta-dependente{
+  // p{margin:5px;padding:0;}
+
+  .info-important{
+    font-weight: bold;
+  }
+  .simple-button {
+    background-color: transparent;
+    border:1px solid #7C7C7C;
+    padding: 3px auto;
+    color: #7C7C7C;
+    width: 100%;
+    font-family: $font8 !important;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .dependents{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+    div{
+      margin: 10px 0;
+    }
+    .titulo-convidados{
+      font-size: 20px;
+      font-family: Montserrat;
+      text-transform: uppercase;
+      /* padding-top: 20px; */
+      margin-top: 20px;
+    }
+    @include respond-to('medium'){
+      .titulo-convidados{
+        display: none;
+      }
+      width: 100%;
+      margin: 0;
+      display: grid;
+      grid-template: 19% 70%/45% 45%;
+      grid-gap: 24px 46px;
+    }
+    .border-footer{
+
+      @include respond-to (medium){
+        border-bottom: 1px solid #979797;
+        opacity: 0.5;
+        grid-row: 3;
+        grid-column: 1 / span 2;
+      }
+    }
+  }
+  .id-dependent{
+    p{
+      margin:0;
+      padding:0;
+    }
+    h4 {
+      margin:5px auto;
+      font-size: 25px;
+    }
+    .convidado{
+      font-size: 15px;
+      color: #7C7C7C;
+    }
+    .plan{
+      font-weight: 600;
+    }
+    @include respond-to('medium'){
+      grid-column: 1;
+      grid-row: 1;
+
+    }
+  }
+  .info-dependent{
+    min-width: 200px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+
+    display: grid;
+  
+    grid-template: 24% 50%/50% 50%;
+   
+    grid-column: 1;
+    grid-row: 2;
+    line-height: 20px;
+    font-size: 15px;
+    // height: 314px;
+    justify-content: space-between;
+    align-items: baseline;
+  
+
+    .nrn-st-edit{
+      color: darkred;
+      font-size: 29px;
+
+
+        grid-column: 2;
+        grid-row: 1;
+        text-align: end !important;
+    
+    }
+
+    .info-title{
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      justify-content: space-between;
+
+    
+        grid-column: 1;
+        grid-row: 1;
+        .cadastro{
+          font-size: 20px;
+           font-family: Montserrat !important;
+           font-weight: 100 !important;
+      }
+    }
+
+    .info-content-cadastro {
+ 
+        margin: 8px 0 0 0;
+      
+          font-size: 15px;
+          font-family: $font1;
+          color: #27292D;
+          font-weight: 600 !important;
+   
+    }
+
+  }
+  .ticket-card-dependent{
+    min-width: 200px;
+    // padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    line-height: 17px;
+
+
+    @include respond-to(medium){
+      grid-column: 2;
+      grid-row: 2;
+      // height: 314px;
+      min-width: 300px;
+      display: grid;
+      grid-template: 42px/auto;
+      line-height: 0px !important;
+    }
+
+    .info-title{
+      padding-left: 12px;
+      padding-top: 28px;
+    }
+    .info-content{
+      display: grid;
+      grid-template: 22%/100%;
+    padding: 12px;
+
+      .card-content{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        div {
+          margin: 15px 15px 0 0; 
+        }
+      }
+     
+        .ticket-name{
+          font-size: 20px;
+          font-family: Montserrat ExtraLight !important;
+          font-weight: bold;
+          
+        }
+        .content-title{
+          font-size:13px;
+          font-family: $font1;
+        }
+        .content{
+          font-family: $font8 !important;
+          font-weight: bold;
+          color: #27292D;
+          font-size:17px;
+        }
+        .status{
+          font-size:13px;
+        }
+      
+    }
+    .digital-content{
+      
+      align-items: baseline;
+      align-items: baseline;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      
+      span.card{
+        text-align: end;
+        font-size: 13px;
+        font-family: $font1;
+        font-weight: 600;
+        color: black;
+        padding-top: 51px;
+        position: relative;
+        bottom: 18px;
+
+        @include respond-to(medium){
+          padding-top: 9px;
+          bottom: 1px;
+          position: flex;
+        }
+      }
+      .eye{
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        background-color:#B11116;
+        height: 33px;
+        width: 48px;
+        padding-left: 24px;
+        @include respond-to(medium){
+          bottom: 4px;
+        }
+        .nrn-eye{
+          font-size: 11px;
+          line-height: 49px;
+          padding-right: 3px;
+          text-align: end;
+        }
+      }
+    
+      @include respond-to(medium){
+        grid-template: 91%/97% 8%;
+        height: 37px;
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+
+@import '../../../../assets/styles/utils/mixins';
+@import '../../../../assets/styles/utils/variables';
+.minha-conta {
+  max-width: $max-width;
+  margin: 0px auto 60px auto;
+
+  .mat-tab-body-content {
+    overflow: hidden;
+  }
+
+  .app-wrapper {
+    margin-top: 0;
+  }
+  
+  .mat-tab-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mat-tab-header {
+    width: 100%;
+    background: transparent;
+  }
+
+
+  .mat-tab-labels {
+    justify-content: space-evenly;
+  }
+  
+  .mat-tab-label {
+    color: black;
+    opacity: 1 !important;
+    z-index: $z-index-level-10;
+    height: 100%;
+    padding: 10px;
+    justify-content: center;
+    font-size: 16px;
+
+    a {
+      color: black;
+    }
+
+    a:hover {
+      color: grey;
+    }
+  }
+
+  .mat-tab-group.mat-primary .mat-ink-bar,
+  .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: transparent;
+  }
+
+  .mat-tab-header,
+  .mat-tab-nav-bar {
+    border-bottom: 0 solid transparent;
+  }
+
+  .mat-tab-label-active {
+    background: transparent;
+    color: black;
+    border-color: black;
+    font-weight: bold;
+
+    .mat-tab-label-content {
+      border-bottom: 1px solid #C11D1E;
+    }
+  }
+
+  @include respond-to(medium) {
+    margin: 40px auto 60px auto;
+
+    .mat-tab-group {
+      display: grid;
+      grid-template: auto / 16% 84%;
+    }
+
+    mat-tab-group .mat-tab-labels {
+      display: flex;
+      flex-direction: column!important;
+      margin-left: 20px;
+    }
+
+    .mat-tab-label {
+      justify-content: flex-start;
+    }
+
+    .mat-tab-header-pagination {
+      display: none !important;
+    }
+  }
+
+  @include respond-to(large) {
+    mat-tab-group .mat-tab-labels {
+      margin-left: 0px;
+    }
+  }
+}
